@@ -55,3 +55,5 @@ public void onPageScrolled(int position, float positionOffset, int positionOffse
 GradientView.setImageAlpha(float alpha);
 设置当前引用View的透明度，0-1,0：全透明  1：不透明
 ```
+#### 使用的Bitmap格式
+![](https://github.com/YuQianhao/GradientView/blob/master/app/src/main/res/mipmap-xhdpi/ic_menu_start_conversation.png)
