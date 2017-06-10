@@ -27,3 +27,31 @@ textSize          :字体大小，默认不写为12sp
 achieveColor      :渐变的颜色
 textColor         :文本的初始颜色
 ```
+### 2、设置ViewPager滑动监听并设置View渐变
+```java
+private ArrayList<GradientView> mArrayLists;
+
+/**初始化代码就不写了，可以打开MainActivity去看，mArrayLists装有3个实例化的GradientView引用*/
+
+@Override
+public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    if(positionOffset>0){
+    /**
+      * position：表示当前操作的View的Index，所以position+1就是欲滑到的View，即正在渐变的View，所以position表示当前
+      *           正在反渐变的View；
+      */
+        GradientView left=mArrayLists.get(position);
+        GradientView right=mArrayLists.get(position+1);
+        //positionOffset：滑动的偏移量
+        //当前正在反渐变的View跟随偏移量渐渐地透明
+        left.setImageAlpha(1-positionOffset);
+        //当前正在渐变的View跟随偏移量渐渐不透明
+        right.setImageAlpha(positionOffset);
+    }
+}
+```
+#### API
+```java
+GradientView.setImageAlpha(float alpha);
+设置当前引用View的透明度，0-1,0：全透明  1：不透明
+```
